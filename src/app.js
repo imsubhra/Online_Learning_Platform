@@ -25,6 +25,10 @@ app.use(express.urlencoded({extended:true}));
 const publicDirectory = path.join(__dirname,'../public');
 app.use(express.static(publicDirectory));
 
+//Routes---------------------------
+var IndexRoutes = require('../routes/index')
+app.use(IndexRoutes)
+
 
 
 //Start the server
