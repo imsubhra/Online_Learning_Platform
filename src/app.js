@@ -9,7 +9,10 @@ app.use(express.json());
 // using dotenv module for environment
 require("dotenv").config();
 
-
+//DB connection
+mongoose.connect(process.env.MONGO_URL,{ useUnifiedTopology: true },()=>{
+	console.log("DB Connected ...")
+})
 
 const PORT = process.env.PORT || 3000;
 
