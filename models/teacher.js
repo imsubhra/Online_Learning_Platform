@@ -1,14 +1,10 @@
-var mongoose = require('mongoose'); 
-var Schema = mongoose.Schema; 
+var mongoose = require("mongoose");
+var teacherSchema   =   new mongoose.Schema({
+    name:String,
+    classname:String,
+    pptimages:[{
+        type:String
+    }]
+});
 
-
-var Teacher = new Schema({
-    name:{type:String,required:true}, 
-	contact_number:{type:String,required:true} ,
-	email_id :{type:String,required:true} ,  
-    department:{type:String,required:true} ,
-}); 
-
-
-
-module.exports = mongoose.model('Teacher', Teacher);
+module.exports  =   mongoose.model("teacher",teacherSchema);
