@@ -56,13 +56,9 @@ router.post('/',upload.array('pptimages',100),(req,res)=>{
     TeacherSchema.name = req.body.name;
     TeacherSchema.classname = req.body.classname;
     //console.log(req.files)
-    
-    const reqFiles = []
-    const url = req.protocol + '://' + req.get('host')
-    for (var i = 0; i < req.files.length; i++) {
-     reqFiles.push(url + '/public/' + req.files[i].filename)
-    }
-    TeacherSchema.pptimages = reqFiles;
+    req.files.forEach(function(file){
+        TeacherSchema.pptimages.push(file.path);
+    });
     TeacherSchema.save(function(err,data){
         if(err){
             console.log(err);
