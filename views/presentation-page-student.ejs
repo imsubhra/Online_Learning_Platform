@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+     
+<link
+href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+rel="stylesheet"
+/>
+</head>
+<style>
+  :root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 500ms;
+    
+  }
+
+  
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #50b325;
+}
+
+body {
+  background-color: whitesmoke;
+  font-family: 'Open Sans';
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+img {
+  vertical-align: middle;
+}
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: rgba(73, 69, 69, 0.822);
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+/*start */
+
+
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  /* font-size: 0.5rem; */
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+ 
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 77%;
+  padding: 15px;
+  margin: 6px 9px -21px 1px;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 50px;
+  border-radius: 10px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: rgb(46, 208, 46);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+ 
+  opacity: 0.8;
+  border-radius: 10px;
+ 
+}
+
+
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: #ce162e;
+}
+
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+#slideDisp{
+  display: none;
+}
+.forminput{
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+} 
+.form-btn{
+  width: 100%;
+background-color: #50b325;
+color: black;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+.form-btn:hover{
+background-color: #40732a;
+}
+#firstscreen{
+ border: 5px solid #b6b6b6;
+border-radius: 5px;
+background-color: #23232e;
+width: 100%;
+margin-top: 3rem;
+padding: 1rem;
+}
+#screen1{
+  display: blockS;
+}
+/* end */
+
+
+/* end */
+
+
+/*mobile view*/
+@media only screen and (max-width: 600px) {
+  /* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 15px;
+  right: 18px;
+  width: 200px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  
+  bottom: 0;
+  right: 0px;
+  border: 1px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 220px;
+  padding: 4px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 75%;
+  padding: 15px;
+  margin: 0px 5px -15px 1px;
+
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 42px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 42px;
+  /* margin-bottom:10px; */
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: #ce162e;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+
+}
+
+
+#mdiv {
+  width: 35px;
+  height: 35px;
+  background-color: red;
+  border: 2px solid black;
+  margin-left: 240px;
+  border-radius: 10px;
+}
+
+.mdiv {
+  height: 25px;
+  width: 4px;
+  /* margin-left: 24px; */
+  background-color: #e9e9e9;
+  border-radius: 10px;
+  transform: rotate(45deg);
+  Z-index: 1;
+}
+
+.md {
+  height: 25px;
+  width: 4px;
+  background-color: #e9e9e9;
+  border-radius: 10px;
+  transform: rotate(90deg);
+  Z-index: 2;
+}
+
+#mdiv:hover{
+    background-color: rgb(189, 10, 10);
+   
+}
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+
+    #mdiv {
+  width: 25px;
+  height: 25px;
+  background-color: red;
+  border: 0.5px solid black;
+  margin-left: 180px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.mdiv {
+  height: 12.5px;
+  width: 2px;
+  /* margin-left: 12px; */
+  background-color: #e9e9e9;
+  transform: rotate(45deg);
+  Z-index: 1;
+}
+
+.md {
+  height: 12.5px;
+  width: 2px;
+  background-color: #e9e9e9;
+  transform: rotate(90deg);
+  Z-index: 2;
+}
+
+
+
+}
+
+
+
+</style>
+<body>
+
+<h2 style="text-align:center">Students View</h2>
+<p id="session_id" style="display: none;"><%=data._id%></p>
+
+
+<div id="screen1" style="width: 100%;padding: 2rem 10%;">
+<div id="firstscreen" >
+  <form id="nameform" style="padding: 25px;font-size: 2rem;color: #b6b6b6;">
+    <label>Enter your Name</label>
+    <input id="username" class ="forminput" placeholder="Enter your name here" required> 
+    <br>
+    <!-- <button  class="form-btn"  onclick="Userfn()" value="Start" >Start</button> -->
+  </form>
+  <button  class="form-btn"  onclick="Userfn()" value="Start" >next</button>
+</div>
+</div>
+
+
+<div class="container" id="slideDisp">
+    <%if(data.pptimages.length>1){%>
+        <%data.pptimages.forEach(function(image){%>
+          <div class="mySlides">
+            <div class="numbertext">1 / 6</div>
+            <img src="/<%=image%>" style="width:100%">
+          </div>
+        <%});%>
+      <%}else{%>
+        <div class="mySlides">
+          <div class="numbertext">1 / 6</div>
+          <img src="/<%=data.pptimages%>" style="width:100%">
+        </div>
+      <%}%>
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <%if(data.pptimages.length>1){%>
+        <% var i=1;%>
+        <%data.pptimages.forEach(function(image){%>
+          <div class="column">
+            <img class="demo cursor" src="/<%=image%>" style="width:100%" onclick="currentSlide(`<%=i%>`)" alt="Small Image">
+          <%++i%>
+          </div>
+        <%});%>
+      <%}else{%>
+        
+        <div class="column">
+          <img class="demo cursor" src="/<%=data.pptimages%>" style="width:100%" onclick="currentSlide(1)" alt="Small Image">
+        </div>
+      <%}%>
+      
+  </div>
+<!-- start  -->
+
+<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="" id="chatForm" class="form-container">
+
+    
+    <button type="button"  onclick="closeForm()" id="mdiv" >
+      <div class="mdiv" style="margin:auto;">
+        <div class="md" ></div>
+      </div>
+    
+</button>
+  
+    <div id="txtmsg" style="height: 6rem; overflow:auto;">
+      
+    </div>
+    
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" id="message" style="height: 2rem"></textarea>
+
+    <button  class="btn" ><b style="font-size: 1rem;">></b></button>
+    
+  </form>
+</div>
+
+<!-- end -->
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+  const room = document.getElementById("session_id").innerText;
+  const socket=io();
+  socket.on('changeslide',n =>{
+    currentSlide(n);
+  })
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+  
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+ 
+      var  username = document.getElementById('username').innerText;
+      var user;
+      var formstudent = document.getElementById('nameform');
+
+      // Adds a listener for the "submit" event.
+        formstudent.addEventListener('submit', function(e) {
+
+         e.preventDefault();
+         Userfn();
+
+          });
+
+      function Userfn(){
+        username = document.getElementById('username').value;
+
+        if(username==""){
+          username="ghost";
+        }
+        user= username;
+        console.log(user);
+        socket.emit("joinRoom",{username,room});
+        document.getElementById("screen1").style.display = "none";
+        document.getElementById("slideDisp").style.display = "block";
+
+
+      }
+
+    socket.on('newUser',newuser =>{
+      openForm();
+      // document.getElementById("txtmsg").insertAdjacentHTML("afterend",'<h3 style="color : green">'+newuser+'</h3>'+ 'Joined');
+    const div = document.createElement('div');
+    div.classList.add('messages');
+    div.innerHTML = `  <p class="lead" ><span style="color : green">${newuser} </span >joined </p>`;
+    document.querySelector('#txtmsg').appendChild(div);
+    })
+
+    socket.on('userList',userList =>{
+      // console.log(userList);
+    })
+
+    socket.on('deadUser',newuser =>{
+      openForm();
+      // console.log("disconnected",newuser);
+      const div = document.createElement('div');
+      div.classList.add('messages');
+      div.innerHTML = `  <p class="lead" ><span style="color : red">${newuser} </span >Disconnected </p>`;
+      document.querySelector('#txtmsg').appendChild(div);
+    })
+
+  const chatForm = document.getElementById("chatForm");
+  const chatMessages = document.getElementById("txtmsg") ;
+  chatForm.addEventListener('submit', (e) =>{
+    e.preventDefault();
+
+    const msg = e.target.elements.message.value;
+    socket.emit('chatMessage', msg);
+    e.target.elements.message.value="";
+    e.target.elements.message.focus();
+});
+
+socket.on('message', message =>{
+    outputMessage(message);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+function outputMessage(message){
+  console.log("working");
+    const div = document.createElement('div');
+    div.classList.add('messages');
+    div.innerHTML = `  <p class="lead"><span style="color:cornflowerblue;">${message.username} </span><span style="font-size: 0.5rem;">${message.time}</span>:${message.text} </p>`;
+    document.querySelector('#txtmsg').appendChild(div);
+}
+</script>
+<script>
+  document.onkeydown = function (e) {
+  switch (e.key) {
+      case 'ArrowLeft':
+        plusSlides(-1)
+          break;
+      case 'ArrowRight':
+         plusSlides(1);
+  }
+};
+</script>
+</body>
+</html>
