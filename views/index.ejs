@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyLearn : Modern Way of Learning ...</title>
+  <style>
+    :root {
+      font-size: 16px;
+      font-family: 'Open Sans';
+      --text-primary: #b6b6b6;
+      --text-secondary: #ececec;
+      --bg-primary: #23232e;
+      --bg-secondary: #141418;
+      --transition-speed: 500ms;
+      
+    }
+    body::-webkit-scrollbar {
+      width: 0.25rem;
+    }
+    body::-webkit-scrollbar-track {
+      background: #1e1e24;
+    }
+    body::-webkit-scrollbar-thumb {
+      background: #050505;
+    }
+    .container {
+      display: grid;
+      width:100%;
+      
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 150px);
+      grid-gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .item{
+      height: 80px;
+      background-color: #5e76dd;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      color: var(--text-primary);
+      border-radius: 4px;
+      border: 5px solid #b6b6b6;
+      display: grid;
+      text-decoration: none;
+      text-align: center;
+      padding: 30px;
+      font-size: 2rem;
+    }
+    .heading{
+      border-top: 0.005rem solid #141418;
+        border-bottom:0.005rem solid #141418 ;
+      
+    margin: 10px;
+    font-size: 4rem;
+    padding: 20px;
+    }
+    .item:hover {
+        background-color: #ffffff;
+        color: #5e76dd;
+      }
+      
+      
+      @media only screen and (max-width: 1200px) {
+        .container {
+      display: grid;
+      width:100%;
+      
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 367px);
+      grid-gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .item{
+      height: 300px;
+      padding-top: 2rem;;
+    }
+      }
+      
+    </style>
+</head >
+<body style="background-color: whitesmoke;">
+  <h2 class="heading" style="text-align: center; color: #5e76dd;">Easylearn : Modern Way of Learning ...</h2>
+<br>
+  <a href="/" class="item item1" >TEACHER</a>
+  <a href="#" class="item item2" >STUDENT</a>
+  <a href="#" class="item item3" >INFORMATION</a>
+</body>
+</html>

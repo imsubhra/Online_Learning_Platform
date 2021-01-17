@@ -9,8 +9,6 @@ router.get("/",(req,res)=>{
 
 
 var teacherRoutes = require('./Teacher/teacher'); 
-var studentRoutes = require('./Student/student');
 router.use("/teacher", teacherRoutes); 
-router.use("/student", studentRoutes); 
 
 module.exports = router;
