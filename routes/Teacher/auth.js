@@ -73,7 +73,7 @@ router.post('/',upload.array('pptimages',40),(req,res)=>{
     })
 })
 
-//Join class id link - Get route 
+//Join class id link - Get route - teacher/:id
 router.get('/:id', (req,res)=>{
     teacherSchema.findById(req.params.id, (err,data)=>{
             if(err)
@@ -84,8 +84,41 @@ router.get('/:id', (req,res)=>{
             else 
             {
                 console.log(data)
-               // res.render('linkshare',{data})
+                res.render('linkshare.ejs',{data})
             }
+    })
+})
+
+//Start Session - Get Route - /teacher/session/:id 
+router.get('/session/:id',(req,res)=>{
+    teacherSchema.findById(req.params.id,(err,data)=>{
+        if(err)
+        {
+            console.log(err)
+            res.redirect('www.google.com')
+        }
+        else 
+        {
+            res.send('In Presentation Page for Teacher')
+            //res.render('presentation-teacher.ejs',{data})
+        }
+    })
+})
+
+
+//Start Session - Get Route - /teacher/student/session/:id - Student Route
+router.get('/student/session/:id',(req,res)=>{
+    teacherSchema.findById(req.params.id,(err,data)=>{
+        if(err)
+        {
+            console.log(err)
+            res.redirect('/teacher');
+        }
+        else 
+        {
+            res.send("In Presentation page for Student")
+            //res.render('presentation-student.ejs',{data})
+        }
     })
 })
 
