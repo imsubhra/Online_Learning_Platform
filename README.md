@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Online Learning Platform
-=======
 # Online Learning Platform 
->>>>>>> d50e3dbf96d2b651d4b33734497b8eb698993445
 
 **Installation**
 
