@@ -1,6 +1,6 @@
 var moment = require("moment");
 
-formatMessage=(username, text)=>{
+function formatMessage(username, text){
     return{
         username,
         text,

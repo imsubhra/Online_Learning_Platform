@@ -4,7 +4,7 @@ var path = require('path')
 var multer = require('multer')
 var fs =   require('fs-extra')
 var {userJoin,userLeave,getCurrentUser,getRoom} = require('../chat/users')
-var {formatMessage}= require('../chat/messages')
+var formatMessage= require('../chat/messages')
 var http = require('http').Server(router)
 var io   = require('socket.io')(http)
 var teacherSchema = require('../../models/teacher')
@@ -88,7 +88,7 @@ router.get('/:id', (req,res)=>{
 })
 
 //Start Session - Get Route - /teacher/session/:id 
-router.get('/session/:id',(req,res)=>{
+router.get('/session/:id/teacher',(req,res)=>{
     teacherSchema.findById(req.params.id,(err,data)=>{
         if(err)
         {
@@ -105,7 +105,7 @@ router.get('/session/:id',(req,res)=>{
 
 
 //Start Session - Get Route - /teacher/student/session/:id - Student Route
-router.get('/student/session/:id',(req,res)=>{
+router.get('/session/:id',(req,res)=>{
     teacherSchema.findById(req.params.id,(err,data)=>{
         if(err)
         {
@@ -120,6 +120,35 @@ router.get('/student/session/:id',(req,res)=>{
     })
 })
 
+router.post("/session/:id/teacher",function(req,res){
+    teacherSchema.findById(req.params.id,function(err,data){
+        if(err){
+            console.log(err);
+            res.redirect("/");
+        }
+        else{
+            let path = './uploads/'+data.name;
+            fs.remove(path,function(err){
+                if(err){
+                    console.log(err);
+                    res.redirect("/");
+                }
+                else{
+                    teacherSchema.deleteOne({_id:data._id},function(err){
+                        if(err){
+                            console.log(err);
+                            res.redirect("/");
+                        }
+                        else{
+                            res.redirect("/");
+                        }
+                    })
+                }
+            })
+        }
+    })
+})
+
 io.on('connection',function(socket){
     socket.on('joinRoom',({username,room})=>{
         const user = userJoin(socket.id,username, room);
@@ -129,12 +158,16 @@ io.on('connection',function(socket){
         io.to(user.room).emit('userList',userList);
       })
 
-      socket.on('currentslide',number =>{
+      socket.on('currentslide',n =>{
         const user = getCurrentUser(socket.id);
-        io.to(user.room).emit('changeslide',number);
+        io.to(user.room).emit('changeslide',n);
 
       })
-   
+    //   socket.on('userLive',username =>{
+    //     const user = getCurrentUser(socket.id);
+    //     socket.username=username;
+
+    //   })
 
       socket.on('chatMessage', msg =>{
         const user = getCurrentUser(socket.id);
